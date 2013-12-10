@@ -8,14 +8,16 @@
 
 #define e(s) utf8_encode(s)
 
-
-static void t(const char *str, const char *expected) {
-  char *enc = utf8_encode(str);
-  assert(0 == strcmp(enc, expected));
+static char *
+t (const char *str, const char *enc) {
+  char *r = e(str);
+  assert(0 == strcmp(enc, r));
+  return r;
 }
 
 TEST(encode) {
   char *enc = NULL;
+  char *tmp = NULL;
   unsigned char a[64];
 
   // 1 byte
@@ -140,16 +142,25 @@ TEST(encode) {
   printf("encode: 2 byte ok\n");
 
   // 3 byte
-  enc = e("\uffff");
+  enc = t("𐌈", "ð");
+
+  printf("encode: 3 byte ok\n");
 
 
+  // interpolation
   // http://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt
   t("∮ E⋅da = Q,  n → ∞, ∑ f(i) = ∏ g(i)",
-      "â® Eâda = Q,  n â â, â f(i) = â g(i)");
+    "â® Eâda = Q,  n â â, â f(i) = â g(i)");
+
+
+  t("∮ E⋅da = Q,  n → ∞, ∑ f(i) = ∏ g(i)",
+    "â® Eâda = Q,  n â â, â f(i) = â g(i)");
 
   t("STARGΛ̊TE SG-1, a = v̇ = r̈, a⃑ ⊥ b⃑",
-      "STARGÎÌTE SG-1, a = vÌ = rÌ, aâ â¥ bâ");
+    "STARGÎÌTE SG-1, a = vÌ = rÌ, aâ â¥ bâ");
 
+
+  printf("encode: interpolation ok\n");
 
   return 0;
 }

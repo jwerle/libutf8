@@ -5,6 +5,7 @@ AR = ar
 LD = ld
 LN = ln
 RM = rm
+VALGRIND ?= valgrind
 STRIP = strip
 PREFIX ?= /usr/local
 VERSION_MAJOR = 0
@@ -50,10 +51,12 @@ src/.c.o:
 test/.c.o:
 	$(CC) $(CFLAGS) -c $<
 
-test: all $(TEST_OBJS)
-	$(CC) $(TEST_OBJS) test/test.c ./$(TARGET_STATIC) $(CFLAGS) -o $(TEST_MAIN)
-	$(VALGRIND) ./$(TEST_MAIN)
+check: test
+	$(VALGRIND) --leak-check=full ./$(TEST_MAIN)
 
+test: $(TEST_OBJS)
+	$(CC) $(TEST_OBJS) test/test.c ./$(TARGET_STATIC) $(CFLAGS) -o $(TEST_MAIN)
+	./$(TEST_MAIN)
 
 clean:
 	$(RM) -f $(TEST_MAIN)
