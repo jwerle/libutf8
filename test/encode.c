@@ -11,6 +11,7 @@
 static char *
 t (const char *str, const char *enc) {
   char *r = e(str);
+  assert(r);
   assert(0 == strcmp(enc, r));
   return r;
 }
@@ -142,17 +143,29 @@ TEST(encode) {
   printf("encode: 2 byte ok\n");
 
   // 3 byte
-  enc = t("𐌈", "ð");
+  t("𐌈", "ð");
+  t("Ⴀ", "á ");
+  t("Ⴥ", "á");
+  t("ლ", "á");
+  t("ᚙ", "á");
+  t("ᚏ", "á");
 
   printf("encode: 3 byte ok\n");
+
+  // unmatched surrogate halves
+  t("���", "ï¿½ï¿½ï¿½");
+  t("������", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+  t("���A", "ï¿½ï¿½ï¿½A");
+  t("���𝌆���", "ï¿½ï¿½ï¿½ðï¿½ï¿½ï¿½");
+  t("���", "ï¿½ï¿½ï¿½");
+
+  printf("encode: unmatched surrogate halve ok\n");
+
+  // tmp = "���"; printf("%s\n", e(tmp));
 
 
   // interpolation
   // http://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt
-  t("∮ E⋅da = Q,  n → ∞, ∑ f(i) = ∏ g(i)",
-    "â® Eâda = Q,  n â â, â f(i) = â g(i)");
-
-
   t("∮ E⋅da = Q,  n → ∞, ∑ f(i) = ∏ g(i)",
     "â® Eâda = Q,  n â â, â f(i) = â g(i)");
 
