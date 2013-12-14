@@ -5,6 +5,8 @@
  * (c) 2013 joseph werle <joseph.werle@gmail.com>
  */
 
+#define _BSD_SOURCE 1
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

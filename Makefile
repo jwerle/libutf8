@@ -17,7 +17,7 @@ TARGET_STATIC = $(TARGET_NAME).a
 TARGET_DSOLIB = $(TARGET_NAME).so.$(VERSION_MAJOR).$(VERSION_MINOR)
 TARGET_DYLIB = $(TARGET_NAME).$(VERSION_MAJOR).$(VERSION_MINOR).dylib
 TARGET_DSO = $(TARGET_NAME).so
-CFLAGS ?= -Iinclude -std=c99 -Wall -fvisibility=hidden -O2 -fPIC -pedantic
+CFLAGS ?= -Iinclude -std=c99 -Wall -fvisibility=hidden -O2 -fPIC -pedantic -lm
 LDFLAGS ?= -shared -soname $(TARGET_DSO).$(VERSION_MAJOR)
 OSX_LDFLAGS ?= -lc -Wl,-install_name,$(TARGET_DSO), -o $(TARGET_DSOLIB)
 SRC = $(wildcard src/*.c)
