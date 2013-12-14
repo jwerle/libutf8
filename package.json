@@ -9,7 +9,7 @@
     "src/encode.c",
     "src/decode.c"
   ],
-  "install": "make",
+  "install": "$(cd deps/utf8 && make)",
   "scripts": {
     "test": "make test"
   },
