@@ -9,6 +9,7 @@
     "src/encode.c",
     "src/decode.c"
   ],
+  "install": "make",
   "scripts": {
     "test": "make test"
   },
