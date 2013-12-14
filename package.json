@@ -4,6 +4,7 @@
   "description": "A whatwg compliant UTF8 encoding and decoding library",
   "repo": "jwerle/libutf8",
   "src": [
+    "Makefile",
     "include/utf8.h",
     "src/encode.c",
     "src/decode.c"
