@@ -5,9 +5,9 @@
   "repo": "jwerle/libutf8",
   "src": [
     "Makefile",
-    "include/utf8.h",
-    "src/encode.c",
-    "src/decode.c"
+    "utf8.h",
+    "encode.c",
+    "decode.c"
   ],
   "install": "make",
   "scripts": {
