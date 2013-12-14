@@ -17,7 +17,7 @@ TARGET_STATIC = $(TARGET_NAME).a
 TARGET_DSOLIB = $(TARGET_NAME).so.$(VERSION_MAJOR).$(VERSION_MINOR)
 TARGET_DYLIB = $(TARGET_NAME).$(VERSION_MAJOR).$(VERSION_MINOR).dylib
 TARGET_DSO = $(TARGET_NAME).so
-CFLAGS ?= -Iinclude -std=c99 -Wall -fvisibility=hidden -O2 -fPIC -pedantic -lm
+CFLAGS ?= -Iinclude -std=c99 -Wall -fvisibility=hidden -O2 -fPIC -pedantic
 LDFLAGS ?= -shared -soname $(TARGET_DSO).$(VERSION_MAJOR)
 OSX_LDFLAGS ?= -lc -Wl,-install_name,$(TARGET_DSO), -o $(TARGET_DSOLIB)
 SRC = $(wildcard src/*.c)
@@ -25,6 +25,10 @@ OBJS = $(SRC:.c=.o)
 TEST_SRC = $(filter-out test/test.c, $(wildcard test/*.c))
 TEST_OBJS = $(TEST_SRC:.c=.o)
 TEST_MAIN = utf8-test
+
+ifneq ("Darwin","$(OS)")
+	CFLAGS += -lm
+endif
 
 ifdef DEBUG
 	CFLAGS += -DUTF8_DEBUG
