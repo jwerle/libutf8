@@ -1,6 +1,6 @@
 
-#ifndef __UTF8_TEST_H__
-#define __UTF8_TEST_H__ 1
+#ifndef UTF8_TEST_H
+#define UTF8_TEST_H 1
 
 #include <assert.h>
 

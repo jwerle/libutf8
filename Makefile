@@ -8,9 +8,11 @@ RM = rm
 VALGRIND ?= valgrind
 STRIP = strip
 PREFIX ?= /usr/local
+DESTDIR ?= utf8
 VERSION_MAJOR = 0
 VERSION_MINOR = 1
-TARGET_NAME = libutf8
+LIB_NAME = utf8
+TARGET_NAME = lib$(LIB_NAME)
 TARGET_STATIC = $(TARGET_NAME).a
 TARGET_DSOLIB = $(TARGET_NAME).so.$(VERSION_MAJOR).$(VERSION_MINOR)
 TARGET_DYLIB = $(TARGET_NAME).$(VERSION_MAJOR).$(VERSION_MINOR).dylib
@@ -67,5 +69,16 @@ clean:
 	$(RM) -f $(TARGET_DSO).$(VERSION_MAJOR)
 	$(RM) -f $(TARGET_DSO)
 	$(RM) -f $(TARGET_DYLIB)
+
+install:
+	test -d $(PREFIX)/$(DESTDIR) || mkdir $(PREFIX)/$(DESTDIR)
+	install include/$(LIB_NAME).h $(PREFIX)/include/$(DESTDIR)
+	install $(TARGET_STATIC) $(PREFIX)/lib
+	install $(TARGET_DSO) $(PREFIX)/lib
+
+uninstall:
+	rm -rf $(PREFIX)/$(DESTDIR)
+	rm -f $(PREFIX)/lib/$(TARGET_STATIC)
+	rm -f $(PREFIX)/lib/$(TARGET_DSO)
 
 .PHONY: test
