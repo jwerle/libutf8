@@ -56,7 +56,7 @@ main (void) {
 
 ## api
 
-See [include/utf8.h](https://github.com/jwerle/libutf8/blob/master/include/utf8.h)
+See [utf8.h](https://github.com/jwerle/libutf8/blob/master/utf8.h)
 
 ## license
 
