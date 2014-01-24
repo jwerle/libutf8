@@ -9,7 +9,6 @@
     "encode.c",
     "decode.c"
   ],
-  "install": "make",
   "scripts": {
     "test": "make test"
   },
