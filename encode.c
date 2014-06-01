@@ -12,7 +12,7 @@
 #include <string.h>
 #include <math.h>
 #include <errno.h>
-#include <utf8.h>
+#include "utf8.h"
 
 char *
 utf8_encode (const char *str) {
