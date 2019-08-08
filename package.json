@@ -1,14 +1,7 @@
 {
-  "name": "utf8",
+  "name": "jwerle/@libutf8",
   "version": "0.0.1",
-  "description": "A whatwg compliant UTF8 encoding and decoding library",
-  "repo": "jwerle/libutf8",
-  "src": [
-    "Makefile",
-    "utf8.h",
-    "encode.c",
-    "decode.c"
-  ],
+  "description": "A whatwg compliant UTF8 encoding and decoding C99 library",
   "scripts": {
     "test": "make test"
   },
