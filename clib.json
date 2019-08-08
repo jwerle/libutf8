@@ -1,6 +1,6 @@
 {
   "name": "utf8",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A whatwg compliant UTF8 encoding and decoding library",
   "repo": "jwerle/libutf8",
   "src": [
