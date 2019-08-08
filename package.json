@@ -1,6 +1,6 @@
 {
   "name": "jwerle/@libutf8",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A whatwg compliant UTF8 encoding and decoding C99 library",
   "scripts": {
     "test": "make test"
@@ -10,7 +10,10 @@
     "url": "git@github.com:jwerle/libutf8.git"
   },
   "keywords": [
-    "utf8", "charset", "encoding", "decoding"
+    "utf8",
+    "charset",
+    "encoding",
+    "decoding"
   ],
   "author": "Joseph Werle",
   "license": "MIT",
