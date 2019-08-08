@@ -1,6 +1,6 @@
 {
   "name": "jwerle/@libutf8",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A whatwg compliant UTF8 encoding and decoding C99 library",
   "scripts": {
     "version": "./scripts/update-clib-json && git add clib.json",
